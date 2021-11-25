@@ -3,9 +3,12 @@ package com.bootcamp.devsuperior.movieflix.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bootcamp.devsuperior.movieflix.dtos.MovieCardDTO;
 import com.bootcamp.devsuperior.movieflix.dtos.MovieDTO;
 import com.bootcamp.devsuperior.movieflix.entities.Movie;
 import com.bootcamp.devsuperior.movieflix.repositories.MovieRepository;
@@ -24,5 +27,11 @@ public class MovieService {
 		Movie movie = optMovie.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 
 		return new MovieDTO(movie);
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<MovieCardDTO> findByGenre(Long genreId, Pageable pageable) {
+		Page<Movie> page = movieRepository.find( genreId, pageable);
+		return page.map(elem -> new MovieCardDTO(elem));
 	}
 }
