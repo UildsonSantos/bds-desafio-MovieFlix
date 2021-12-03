@@ -1,0 +1,39 @@
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 17px;
+  font-size: 16px;
+  height: 100%;
+}
+
+.login-card h1 {
+  font-size: 48px;
+  font-weight: normal;
+  text-align: center;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 50px 0 50px;
+  
+}
+
+.alert {
+  position: relative;
+  padding: .5rem .5rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  width: 100%;
+  max-width: 384px;
+}
+
+.login-card form {
+  min-width: 264px;
+  width: 100%;
+  max-width: 384px;
+}
+
+.login-submit {
+  margin-top: 74px;
+}
