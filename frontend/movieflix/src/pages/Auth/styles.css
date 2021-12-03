@@ -1,0 +1,56 @@
+.admin-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1400px;
+}
+
+.admin-banner-container {
+  display: none;
+  color: #ffffff;
+}
+
+.admin-form-container {
+  width: 479px;
+  height: 573px;
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .admin-container {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 652px;
+    padding: 38px 105px 41px 67px;
+  }
+  .admin-banner-container {
+    display: unset;
+    margin-top: 40px;
+    width: 400px;
+  }
+  .admin-banner-container h1 {
+    margin-bottom: 19px;
+    margin-left: 30px;
+    font-size: 48px;
+  }
+
+  .admin-banner-container p {
+    max-width: 320px;
+    font-size: 22px;
+    margin-left: 30px;
+    margin-bottom: 51px;
+  }
+
+  .admin-banner-container svg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1400px) {
+  .admin-container {
+    padding: 38px 116px 41px 67px;
+  }
+
+}
