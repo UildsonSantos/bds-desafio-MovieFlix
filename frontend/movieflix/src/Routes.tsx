@@ -1,12 +1,13 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Navbar from 'components/Navbar';
 import Auth from 'pages/Auth';
 import Movies from 'pages/Movies';
 import MovieDetails from 'pages/MovieDetails';
+import history from 'util/history';
 
 const Routes = () => (
-  <BrowserRouter>
+  <Router history={history}>
     <Navbar />
     <Switch>
       <Redirect from="/" to="/auth" exact />
@@ -21,7 +22,7 @@ const Routes = () => (
         <MovieDetails />
       </Route>
     </Switch>
-  </BrowserRouter>
+  </Router>
 );
 
 export default Routes;
