@@ -1,0 +1,94 @@
+.card-movies-container {
+  justify-content: space-around;
+  border-radius: 10px;
+  width: 300px;
+  height: 322px;
+  padding: 26px 0 36px;
+  color: #ffffff;
+  margin: 10px;
+}
+
+.card-movies-container img {
+  width: 100%;
+  height: 164px;
+}
+.card-movies-content {
+  padding: 10px 15px;
+}
+
+.card-movies-content h5 {
+  color: #ffc700;
+  font-size: 16px;
+}
+
+.card-movies-content h3 {
+  font-size: 20px;
+}
+
+.card-movies-content h6 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-movies-content p {
+  margin-top: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 13px;
+}
+
+@media (min-width: 576px) {
+  .card-movies-container {
+    width: 278px;
+    margin: 10px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-movies-container {
+    width: 364px;
+    margin: 20px 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-movies-container {
+    width: 436px;
+    height: 427px;
+    margin: 20px 10px;
+  }
+
+  .card-movies-container img {
+    width: 100%;
+    height: 247px;
+  }
+  .card-movies-content {
+    padding: 21px 15px;
+    height: 150px;
+  }
+
+  .card-movies-content h5 {
+    margin-top: 5px;
+  }
+
+  .card-movies-content h6 {
+    margin-top: 5px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-movies-container {
+    width: 298px;
+    height: 332px;
+    margin: 10px 0;
+  }
+
+  .card-movies-container img {
+    width: 100%;
+    height: 164px;
+  }
+  .card-movies-content {
+    padding: 21px 15px;
+    height: 150px;
+  }
+}
