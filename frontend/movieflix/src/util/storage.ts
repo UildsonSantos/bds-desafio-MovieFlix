@@ -17,3 +17,7 @@ export const getAuthData = () => {
   const str = localStorage.getItem(tokenKey) ?? '{}';
   return JSON.parse(str) as LoginResponse;
 };
+
+export const removeAuthData = () => {
+  localStorage.removeItem(tokenKey);
+};
