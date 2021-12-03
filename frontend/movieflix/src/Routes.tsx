@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import Auth from 'pages/Auth';
 import Movies from 'pages/Movies';
+import MovieDetails from 'pages/MovieDetails';
 
 const Routes = () => (
   <BrowserRouter>
@@ -15,6 +16,9 @@ const Routes = () => (
       </Route>
       <Route path="/movies" exact>
         <Movies />
+      </Route>
+      <Route path="/movies/:movieId">
+        <MovieDetails />
       </Route>
     </Switch>
   </BrowserRouter>
