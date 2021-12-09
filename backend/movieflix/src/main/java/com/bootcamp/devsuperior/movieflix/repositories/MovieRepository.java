@@ -11,8 +11,9 @@ import com.bootcamp.devsuperior.movieflix.entities.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 	
-	@Query("SELECT obj FROM Movie obj INNER JOIN obj.genre cats WHERE  "
-	        + "(cats.id = :genreId OR :genreId = 0)"
-	        + "ORDER BY obj.title")
+@Query(nativeQuery = true, value = " SELECT * FROM tb_movie INNER JOIN tb_genre where " 
+				+	" tb_genre.id = tb_movie.genre_id and "
+				+ " (tb_movie.genre_id = :genreId OR :genreId = 0) "
+				+ " order by tb_movie.title ")
 	Page<Movie> find( Long genreId, Pageable pageable);
 }
