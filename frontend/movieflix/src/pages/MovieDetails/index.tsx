@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import ButtonIcon from 'components/ButtonIcon';
 import CardReview from 'components/CardReview';
@@ -44,6 +45,11 @@ const MovieDetails = () => {
     requestBackend(params).then((response) => {
       setMovieReviews((movieReviews) => [...movieReviews, response.data]);
       setValue("text", '')
+      toast.info('Avaliação postada com sucesso!');
+    })
+    .catch(() => {
+      setValue("text", '')
+      toast.error('Erro ao salvar avaliação');
     });
   };
 
