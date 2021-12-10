@@ -1,0 +1,26 @@
+.filter-container-select__control {
+  height: 50px;
+  width: 260px;
+}
+
+.css-b62m3t-container {
+  max-width: 260px;
+  height: 50px;
+}
+.filter-container-select__placeholder {
+  color: #ffffffa8 !important;
+}
+.filter-container-select__menu {
+  color: #ffffff ;
+}
+.filter-container-select__input-container {
+  color: #e1e1e1;
+}
+
+.filter-container-select__indicator-separator {
+  display: none;
+}
+
+.filter-container-select__indicator.filter-container-select__clear-indicator {
+  padding: 8px 0;
+}

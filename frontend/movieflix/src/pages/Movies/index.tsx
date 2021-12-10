@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
-
 import { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 
 import CardMovie from 'components/CardMovie';
 import Pagination from 'components/Pagination';
+import GenreFilter from 'components/GenreFilter';
 import { Movie } from 'types/movie';
 import { SpringPage } from 'types/vendor/spring';
 import { requestBackend } from 'util/requests';
@@ -41,33 +40,11 @@ const Movies = () => {
       : history.push('/');
   }, []);
 
-  const options = [
-    { value: 'aventura', label: 'Aventura' },
-    { value: 'comedia', label: 'Comédia' },
-    { value: 'acao', label: 'Ação' },
-  ];
 
-  
   return (
     <div className="movie-container ">
       <div className="movie-container-filter base-card">
-        <Select
-          options={options}
-          classNamePrefix="movie-container-select"
-          placeholder="Buscar por gênero"
-          isClearable
-          theme={(theme) => ({
-            ...theme,
-
-            colors: {
-              ...theme.colors,
-              primary25: '#ffde67',
-              primary: '#ffc800e7',
-              neutral0: '#6c6c6c',
-              neutral80: '#ffffff',
-            },
-          })}
-        />
+        <GenreFilter />
       </div>
 
       <div className="row">
