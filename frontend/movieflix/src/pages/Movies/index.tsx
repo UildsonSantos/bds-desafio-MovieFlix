@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
 
 import CardMovie from 'components/CardMovie';
 import Pagination from 'components/Pagination';
-import GenreFilter from 'components/GenreFilter';
+import GenreFilter, { GenreFilterData } from 'components/GenreFilter';
 import { Movie } from 'types/movie';
 import { SpringPage } from 'types/vendor/spring';
 import { requestBackend } from 'util/requests';
@@ -13,17 +13,31 @@ import history from 'util/history';
 
 import './styles.css';
 
+type ControlComponentsData = {
+  filterData: GenreFilterData;
+};
+
 const Movies = () => {
   const [page, setPage] = useState<SpringPage<Movie>>();
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const [controlComponentsData, setControlComponentsData] =
+    useState<ControlComponentsData>({
+      filterData: { genre: { id: 0, name: '' } },
+    });
+
+  const handleSubmitFilter = (data: GenreFilterData) => {
+    setControlComponentsData({ filterData: data });
+  };
+
+  const getMovies = useCallback(() => {
     const params: AxiosRequestConfig = {
       method: 'GET',
       url: '/movies',
       params: {
         page: 0,
         size: 4,
+        genreId: controlComponentsData.filterData.genre?.id,
       },
       withCredentials: true,
     };
@@ -38,13 +52,16 @@ const Movies = () => {
             setIsLoading(false);
           })
       : history.push('/');
-  }, []);
+  }, [controlComponentsData]);
 
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
 
   return (
     <div className="movie-container ">
       <div className="movie-container-filter base-card">
-        <GenreFilter />
+        <GenreFilter onSubmitFilter={handleSubmitFilter} />
       </div>
 
       <div className="row">

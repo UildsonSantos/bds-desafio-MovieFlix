@@ -12,14 +12,18 @@ export type GenreFilterData = {
   genre: Genre | null;
 };
 
-const GenreFilter = () => {
+type Props = {
+  onSubmitFilter: (data: GenreFilterData) => void;
+};
+
+const GenreFilter = ({ onSubmitFilter }: Props) => {
   const [genres, setGenres] = useState<Genre[]>([]);
 
   const { handleSubmit, setValue, getValues, control } =
     useForm<GenreFilterData>();
 
   const onSubmit = (formData: GenreFilterData) => {
-    console.log(formData);
+    onSubmitFilter(formData);
   };
 
   const handleChangeGenre = (value: Genre) => {
@@ -29,7 +33,7 @@ const GenreFilter = () => {
       genre: getValues('genre'),
     };
 
-    console.log(obj);
+    onSubmitFilter(obj);
   };
 
   useEffect(() => {
@@ -42,7 +46,6 @@ const GenreFilter = () => {
       setGenres(response.data);
     });
   }, []);
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="filter-form">
