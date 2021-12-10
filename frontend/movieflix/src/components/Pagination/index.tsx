@@ -5,11 +5,19 @@ import { ReactComponent as ArrowIconRight } from 'assets/images/right-arrow.svg'
 
 import './styles.css';
 
-const Pagination = () => {
+type Props = {
+  forcePage?: number;
+  pageCount: number;
+  range: number;
+  onChange?: (pageNumber: number) => void;
+};
+
+const Pagination = ({forcePage, pageCount, range, onChange }: Props) => {
   return (
     <ReactPaginate
-      pageCount={6}
-      pageRangeDisplayed={3}
+      forcePage={forcePage}
+      pageCount={pageCount}
+      pageRangeDisplayed={range}
       marginPagesDisplayed={1}
       containerClassName="pagination-container"
       pageLinkClassName="pagination-item"
@@ -20,6 +28,7 @@ const Pagination = () => {
       disabledClassName="arrow-inactive"
       previousLabel={<ArrowIconLeft />}
       nextLabel={<ArrowIconRight />}
+      onPageChange={(items) => (onChange ? onChange(items.selected) : {})}
     />
   );
 };

@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px 0;
 }
 
 .pagination-item {
@@ -42,4 +43,10 @@
 
 .arrow-active {
   color: #ffc800e7;
+}
+
+@media (min-width: 768px) {
+  .pagination-container {
+    margin: 20px 0;
+  }
 }

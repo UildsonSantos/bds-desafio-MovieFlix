@@ -14,6 +14,7 @@ import history from 'util/history';
 import './styles.css';
 
 type ControlComponentsData = {
+  activePage: number;
   filterData: GenreFilterData;
 };
 
@@ -23,11 +24,15 @@ const Movies = () => {
 
   const [controlComponentsData, setControlComponentsData] =
     useState<ControlComponentsData>({
+      activePage: 0,
       filterData: { genre: { id: 0, name: '' } },
     });
 
+    const handlePageChange = (pageNumber: number) => {
+      setControlComponentsData({ activePage: pageNumber, filterData: controlComponentsData.filterData });
+    };
   const handleSubmitFilter = (data: GenreFilterData) => {
-    setControlComponentsData({ filterData: data });
+    setControlComponentsData({activePage: 0, filterData: data });
   };
 
   const getMovies = useCallback(() => {
@@ -35,7 +40,7 @@ const Movies = () => {
       method: 'GET',
       url: '/movies',
       params: {
-        page: 0,
+        page: controlComponentsData.activePage,
         size: 4,
         genreId: controlComponentsData.filterData.genre?.id,
       },
@@ -80,7 +85,12 @@ const Movies = () => {
           ))
         )}
       </div>
-      <Pagination />
+      <Pagination
+        forcePage={page?.number}
+        pageCount={page ? page.totalPages : 0}
+        range={3}
+        onChange={handlePageChange}
+      />
     </div>
   );
 };
